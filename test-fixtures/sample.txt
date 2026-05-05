@@ -1,0 +1,5 @@
+Hello from doc-reader-sdk!
+This is a plain text file.
+It has multiple lines.
+Line 4, still going strong.
+Final line.

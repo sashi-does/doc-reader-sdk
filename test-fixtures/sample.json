@@ -1,0 +1,9 @@
+{
+  "project": "doc-reader-sdk",
+  "version": "1.0.0",
+  "features": ["pdf", "docx", "xlsx", "pptx", "csv", "json"],
+  "config": {
+    "maxChars": null,
+    "streaming": true
+  }
+}
