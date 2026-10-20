@@ -5,31 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>doculens — one API for every document format</title>
 <meta name="description" content="A universal TypeScript/Node.js SDK for extracting plain text from documents — PDF, Word, Excel, PowerPoint, CSV, JSON and more, behind a single read() call.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23141414' stroke-width='2.4' stroke-linecap='square'%3E%3Ccircle cx='10' cy='10' r='7'/%3E%3Cpath d='M20 20l-5.6-5.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
+<!-- Reusable icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><rect x="9" y="9" width="13" height="13"/><path d="M5 15H2V2h13v3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"><path d="M3 13l7 7L22 5"/></symbol>
+  </defs>
+</svg>
+
 <header>
-  <div class="nav wrap">
+  <div class="wrap nav">
     <a class="brand" href="#top">
-      <span class="brand-mark">🔎</span>
-      doculens
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><circle cx="10" cy="10" r="7"/><path d="M20 20l-5.6-5.6"/></svg>
+      doculens <span class="v">v1.0.0</span>
     </a>
     <nav class="nav-links">
       <a href="#formats">Formats</a>
-      <a href="api/">Docs</a>
-      <a href="https://github.com/sashi-does/doculens">GitHub</a>
-      <a class="cta" href="https://www.npmjs.com/package/doculens">npm ↗</a>
+      <a class="npm-link" href="https://www.npmjs.com/package/doculens">npm</a>
+      <a class="gh-btn" href="https://github.com/sashi-does/doculens"><svg width="15" height="15"><use href="#i-github"/></svg>GitHub</a>
     </nav>
   </div>
 </header>
 
 <main id="top">
-  <section class="hero">
-    <span class="eyebrow"><span class="dot"></span> v1.0.0 · TypeScript · MIT licensed</span>
-    <h1>Stop writing a new parser<br>for every <span class="accent">file type</span>.</h1>
-    <p class="sub">doculens gives you one <code>read()</code> call for PDF, Word, Excel, PowerPoint, CSV, JSON and more — with automatic format detection, streaming for large files, and graceful fallback instead of thrown exceptions.</p>
+  <section class="hero wrap">
+    <span class="eyebrow">TypeScript · Node.js SDK · MIT</span>
+    <div class="crop"><i></i><i></i><i></i><i></i>
+      <h1>Stop writing a new parser for every <span class="hl">file type</span></h1>
+    </div>
+    <p class="sub">doculens gives you one <b>read()</b> call for PDF, Word, Excel, PowerPoint, CSV, JSON and more — automatic format detection, streaming for large files, and graceful fallback instead of thrown exceptions.</p>
 
     <div class="cta-row">
       <a class="btn btn-primary" href="api/">Read the docs →</a>
@@ -37,108 +50,136 @@
     </div>
 
     <div class="install">
-      <span class="cmd">npm install doculens</span>
-      <button class="copy-btn" onclick="copyInstall(this)">Copy</button>
+      <span class="dollar">$</span>
+      <code>npm install doculens</code>
+      <button class="copy-btn" data-copy="npm install doculens" aria-label="Copy install command"><svg><use href="#i-copy"/></svg></button>
     </div>
   </section>
 
-  <section class="code-section">
-    <pre class="codeblock"><span class="tok-kw">import</span> { readDoc } <span class="tok-kw">from</span> <span class="tok-str">'doculens'</span>;
+  <section class="block">
+    <div class="wrap">
+      <span class="label">Usage</span>
+      <div class="term">
+        <div class="term-head">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <span class="title">index.ts</span>
+        </div>
+        <div class="term-body"><pre><span class="tok-kw">import</span> { readDoc } <span class="tok-kw">from</span> <span class="tok-str">'doculens'</span>;
 
 <span class="tok-kw">const</span> result = <span class="tok-kw">await</span> <span class="tok-fn">readDoc</span>(<span class="tok-str">'quarterly-report.pdf'</span>);
 
 console.<span class="tok-fn">log</span>(result.content);   <span class="tok-com">// extracted text</span>
 console.<span class="tok-fn">log</span>(result.chunks);    <span class="tok-com">// per-page / per-sheet / per-slide chunks</span>
-console.<span class="tok-fn">log</span>(result.warnings);  <span class="tok-com">// non-fatal issues, never a thrown exception</span></pre>
+console.<span class="tok-fn">log</span>(result.warnings);  <span class="tok-com">// non-fatal issues, never a thrown exception</span></pre></div>
+      </div>
+    </div>
   </section>
 
   <section class="block" id="formats">
-    <div class="block-head">
-      <h2>One API. Every format.</h2>
-      <p>Detection runs on magic bytes, not just the extension — a renamed file still resolves correctly.</p>
-    </div>
-    <div class="formats">
-      <span class="format-pill">.pdf</span>
-      <span class="format-pill">.docx / .doc</span>
-      <span class="format-pill">.xlsx / .xls</span>
-      <span class="format-pill">.pptx / .ppt</span>
-      <span class="format-pill">.csv / .tsv</span>
-      <span class="format-pill">.json / .jsonl</span>
-      <span class="format-pill">.txt / .md</span>
-      <span class="format-pill">.html / .xml</span>
-      <span class="format-pill">.rtf / .epub</span>
-      <span class="format-pill">.zip</span>
-    </div>
-  </section>
-
-  <section class="block">
-    <div class="block-head">
-      <h2>Built for real-world files</h2>
-      <p>Not just the happy path — the parts that actually break in production.</p>
-    </div>
-    <div class="grid">
-      <div class="card">
-        <span class="icon">🧭</span>
-        <h3>Smart type detection</h3>
-        <p>Extension map, then magic bytes, then ZIP-container refinement for DOCX/XLSX/PPTX/EPUB.</p>
-      </div>
-      <div class="card">
-        <span class="icon">🛟</span>
-        <h3>Never throws</h3>
-        <p>Malformed or unusual files degrade to a warning in the result, not a crashed process.</p>
-      </div>
-      <div class="card">
-        <span class="icon">🌊</span>
-        <h3>Streams large files</h3>
-        <p>Text files over 10&nbsp;MB stream automatically instead of buffering into memory.</p>
-      </div>
-      <div class="card">
-        <span class="icon">🧩</span>
-        <h3>Chunked output</h3>
-        <p>Per-page, per-sheet, per-slide, per-record — ready for search indexes or LLM context windows.</p>
+    <div class="wrap">
+      <span class="label">One API. Every format.</span>
+      <p class="block-sub">Detection runs on magic bytes, not just the extension — a renamed file still resolves correctly.</p>
+      <div class="formats">
+        <span class="format-pill">.pdf</span>
+        <span class="format-pill">.docx / .doc</span>
+        <span class="format-pill">.xlsx / .xls</span>
+        <span class="format-pill">.pptx / .ppt</span>
+        <span class="format-pill">.csv / .tsv</span>
+        <span class="format-pill">.json / .jsonl</span>
+        <span class="format-pill">.txt / .md</span>
+        <span class="format-pill">.html / .xml</span>
+        <span class="format-pill">.rtf / .epub</span>
+        <span class="format-pill">.zip</span>
       </div>
     </div>
   </section>
 
   <section class="block">
-    <div class="block-head">
-      <h2>Also works from the terminal</h2>
-      <p>Installing the package gives you a <code>doculens</code> binary.</p>
+    <div class="wrap">
+      <span class="label">Built for real-world files</span>
+      <p class="block-sub">Not just the happy path — the parts that actually break in production.</p>
+      <div class="grid">
+        <div class="card">
+          <span class="icon">🧭</span>
+          <h3>Smart type detection</h3>
+          <p>Extension map, then magic bytes, then ZIP-container refinement for DOCX/XLSX/PPTX/EPUB.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🛟</span>
+          <h3>Never throws</h3>
+          <p>Malformed or unusual files degrade to a warning in the result, not a crashed process.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🌊</span>
+          <h3>Streams large files</h3>
+          <p>Text files over 10&nbsp;MB stream automatically instead of buffering into memory.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🧩</span>
+          <h3>Chunked output</h3>
+          <p>Per-page, per-sheet, per-slide, per-record — ready for search indexes or LLM context windows.</p>
+        </div>
+      </div>
     </div>
-    <div class="cli-row">
-      <pre class="codeblock"><span class="tok-com"># extract and pretty-print</span>
+  </section>
+
+  <section class="block">
+    <div class="wrap cli-row">
+      <span class="label">Also works from the terminal</span>
+      <p class="block-sub">Installing the package gives you a <code>doculens</code> binary.</p>
+      <div class="term">
+        <div class="term-head">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <span class="title">terminal</span>
+        </div>
+        <div class="term-body"><pre><span class="tok-com"># extract and pretty-print</span>
 npx doculens report.pdf
 
 <span class="tok-com"># page-by-page, truncated at 50k characters</span>
 npx doculens large.pdf --page-by-page --max-chars 50000
 
 <span class="tok-com"># raw JSON output</span>
-npx doculens notes.docx --json</pre>
+npx doculens notes.docx --json</pre></div>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap footer-row">
-    <span class="left">MIT © doculens — built for Node.js 18+</span>
-    <nav class="footer-links">
-      <a href="api/">Full API reference</a>
-      <a href="https://github.com/sashi-does/doculens">GitHub</a>
-      <a href="https://www.npmjs.com/package/doculens">npm</a>
+  <div class="foot-top wrap">
+    <div class="foot-brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"><circle cx="10" cy="10" r="7"/><path d="M20 20l-5.6-5.6"/></svg>
+      doculens
+    </div>
+    <p class="foot-tag">One API for every document format.</p>
+  </div>
+  <div class="wrap foot-bar">
+    <span>MIT © doculens — Node.js 18+</span>
+    <nav class="foot-links">
+      <a href="api/">Docs</a>
       <a href="https://github.com/sashi-does/doculens/blob/main/CONTRIBUTING.md">Contributing</a>
-      <a href="https://github.com/sashi-does/doculens/security/advisories/new">Report a vulnerability</a>
+      <a href="https://github.com/sashi-does/doculens/security/advisories/new">Security</a>
+      <a href="https://github.com/sashi-does/doculens"><svg width="14" height="14"><use href="#i-github"/></svg></a>
+      <a href="https://www.npmjs.com/package/doculens" class="npm-chip">npm</a>
     </nav>
   </div>
 </footer>
 
 <script>
-function copyInstall(btn) {
-  navigator.clipboard.writeText('npm install doculens').then(() => {
-    const prev = btn.textContent;
-    btn.textContent = 'Copied';
-    setTimeout(() => { btn.textContent = prev; }, 1400);
+document.querySelectorAll('.copy-btn').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var text = btn.getAttribute('data-copy');
+    navigator.clipboard.writeText(text).then(function () {
+      btn.classList.add('copied');
+      var original = btn.innerHTML;
+      btn.innerHTML = '<svg><use href="#i-check"/></svg>';
+      setTimeout(function () {
+        btn.classList.remove('copied');
+        btn.innerHTML = original;
+      }, 1500);
+    });
   });
-}
+});
 </script>
 
 </body>
