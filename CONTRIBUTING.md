@@ -1,6 +1,6 @@
 # Contributing
 
-Thanks for considering a contribution to doc-reader-sdk.
+Thanks for considering a contribution to doculens.
 
 ## Setup
 

@@ -1,5 +1,5 @@
 {
-  "project": "doc-reader-sdk",
+  "project": "doculens",
   "version": "1.0.0",
   "features": ["pdf", "docx", "xlsx", "pptx", "csv", "json"],
   "config": {

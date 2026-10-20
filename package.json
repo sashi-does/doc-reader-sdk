@@ -1,5 +1,5 @@
 {
-  "name": "doc-reader-sdk",
+  "name": "doculens",
   "version": "1.0.0",
   "description": "Universal document text extractor SDK for Node.js — PDF, DOCX, XLSX, PPTX, CSV, JSON, and more",
   "type": "commonjs",
@@ -13,7 +13,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "doc-reader": "dist/cli.js"
+    "doculens": "dist/cli.js"
   },
   "files": [
     "dist",

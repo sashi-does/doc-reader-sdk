@@ -1,14 +1,14 @@
-# doc-reader-sdk
+# doculens
 
 [![CI](https://github.com/sashi-does/doc-reader-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/sashi-does/doc-reader-sdk/actions/workflows/ci.yml)
-[![npm version](https://img.shields.io/npm/v/doc-reader-sdk.svg)](https://www.npmjs.com/package/doc-reader-sdk)
+[![npm version](https://img.shields.io/npm/v/doculens.svg)](https://www.npmjs.com/package/doculens)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![node](https://img.shields.io/node/v/doc-reader-sdk.svg)](package.json)
+[![node](https://img.shields.io/node/v/doculens.svg)](package.json)
 
 A universal TypeScript/Node.js SDK for extracting plain text from documents — one API for PDF, Word, Excel, PowerPoint, CSV, JSON and more, with automatic type detection, streaming for large files, and graceful fallback instead of thrown exceptions.
 
 ```ts
-import { readDoc } from 'doc-reader-sdk';
+import { readDoc } from 'doculens';
 
 const result = await readDoc('quarterly-report.pdf');
 console.log(result.content); // extracted text, ready for search, embeddings, an LLM prompt, etc.
@@ -31,7 +31,7 @@ console.log(result.content); // extracted text, ready for search, embeddings, an
 
 ## Why this exists
 
-Pulling text out of a document shouldn't require a different library — and a different mental model — for every file extension. doc-reader-sdk gives you one `read()` call that:
+Pulling text out of a document shouldn't require a different library — and a different mental model — for every file extension. doculens gives you one `read()` call that:
 
 - **Detects the real format** from magic bytes, not just the file extension (so a renamed `.docx` still works).
 - **Never throws on a malformed-but-plausible file.** Extractors degrade to a warning instead of an exception — you always get a result back.
@@ -58,7 +58,7 @@ Pulling text out of a document shouldn't require a different library — and a d
 ## Installation
 
 ```bash
-npm install doc-reader-sdk
+npm install doculens
 ```
 
 Requires Node.js 18+. The published package ships only compiled `dist/`, `README.md`, and `LICENSE` — no source, test fixtures, or dev tooling (see `files` in [package.json](package.json)).
@@ -68,7 +68,7 @@ Requires Node.js 18+. The published package ships only compiled `dist/`, `README
 ### One-shot
 
 ```ts
-import { readDoc } from 'doc-reader-sdk';
+import { readDoc } from 'doculens';
 
 const result = await readDoc('report.pdf');
 console.log(result.content);   // full concatenated text
@@ -80,7 +80,7 @@ console.log(result.warnings);  // non-fatal issues (encoding fallback, scanned P
 ### Reusable instance with default options
 
 ```ts
-import { DocReader } from 'doc-reader-sdk';
+import { DocReader } from 'doculens';
 
 const reader = new DocReader({
   pageByPage: true,   // PDF: extract per page
@@ -152,15 +152,15 @@ interface DocChunk {
 
 ## CLI
 
-Installing the package also gives you a `doc-reader` binary:
+Installing the package also gives you a `doculens` binary:
 
 ```bash
-npx doc-reader report.pdf
-npx doc-reader large.pdf --page-by-page --max-chars 50000
-npx doc-reader data.xlsx --no-all-sheets
-npx doc-reader archive.zip --list-only
-npx doc-reader notes.docx --json   # raw ExtractionResult as JSON
-npx doc-reader --help
+npx doculens report.pdf
+npx doculens large.pdf --page-by-page --max-chars 50000
+npx doculens data.xlsx --no-all-sheets
+npx doculens archive.zip --list-only
+npx doculens notes.docx --json   # raw ExtractionResult as JSON
+npx doculens --help
 ```
 
 Options mirror `ExtractionOptions`: `--max-chars <n>`, `--page-by-page`, `--no-all-sheets`, `--list-only`, `--json`.
@@ -202,7 +202,7 @@ src/
 
 ## Security
 
-doc-reader-sdk is designed to degrade gracefully rather than throw when a file is malformed, but parsing untrusted input (uploads, third-party documents) always carries some risk from the underlying parser libraries. See [SECURITY.md](SECURITY.md) for the current threat model, how to report a vulnerability, and known transitive-dependency advisories (`xlsx`/SheetJS has unpatched advisories on the npm registry; see that file for details and mitigations).
+doculens is designed to degrade gracefully rather than throw when a file is malformed, but parsing untrusted input (uploads, third-party documents) always carries some risk from the underlying parser libraries. See [SECURITY.md](SECURITY.md) for the current threat model, how to report a vulnerability, and known transitive-dependency advisories (`xlsx`/SheetJS has unpatched advisories on the npm registry; see that file for details and mitigations).
 
 ## Contributing
 

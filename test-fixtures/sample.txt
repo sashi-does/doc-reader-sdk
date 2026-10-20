@@ -1,4 +1,4 @@
-Hello from doc-reader-sdk!
+Hello from doculens!
 This is a plain text file.
 It has multiple lines.
 Line 4, still going strong.

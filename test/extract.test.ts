@@ -10,14 +10,14 @@ describe('format detection + extraction', () => {
   it('extracts plain text with correct type', async () => {
     const result = await readDoc(fixture('sample.txt'));
     expect(result.type).toBe('txt');
-    expect(result.content).toContain('Hello from doc-reader-sdk!');
+    expect(result.content).toContain('Hello from doculens!');
     expect(result.charCount).toBeGreaterThan(0);
   });
 
   it('extracts markdown verbatim', async () => {
     const result = await readDoc(fixture('sample.md'));
     expect(result.type).toBe('md');
-    expect(result.content).toContain('# Doc Reader SDK');
+    expect(result.content).toContain('# doculens');
   });
 
   it('extracts CSV rows', async () => {
@@ -32,7 +32,7 @@ describe('format detection + extraction', () => {
     const result = await readDoc(fixture('sample.json'));
     expect(result.type).toBe('json');
     const parsed = JSON.parse(result.content);
-    expect(parsed.project).toBe('doc-reader-sdk');
+    expect(parsed.project).toBe('doculens');
     expect(result.warnings).toHaveLength(0);
   });
 
@@ -102,7 +102,7 @@ describe('ExtractionOptions', () => {
   it('truncates content at maxChars and sets the truncated flag', async () => {
     const result = await readDoc(fixture('sample.md'), { maxChars: 20 });
     expect(result.truncated).toBe(true);
-    expect(result.content.startsWith('# Doc Reader SDK')).toBe(true);
+    expect(result.content.startsWith('# doculens')).toBe(true);
   });
 
   it('shares default options across repeated reads on the same DocReader instance', async () => {

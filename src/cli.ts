@@ -55,10 +55,10 @@ function printResult(result: ExtractionResult) {
 
 function usage() {
   console.log(`
-${c('bold', 'doc-reader')} — Extract text from any document
+${c('bold', 'doculens')} — Extract text from any document
 
 ${c('bold', 'Usage:')}
-  npx tsx src/cli.ts <file> [options]
+  npx doculens <file> [options]
 
 ${c('bold', 'Options:')}
   --max-chars <n>     Truncate output at N characters
@@ -69,11 +69,11 @@ ${c('bold', 'Options:')}
   --help              Show this help
 
 ${c('bold', 'Examples:')}
-  npx tsx src/cli.ts report.pdf
-  npx tsx src/cli.ts data.xlsx
-  npx tsx src/cli.ts large.pdf --page-by-page --max-chars 50000
-  npx tsx src/cli.ts archive.zip --list-only
-  npx tsx src/cli.ts notes.docx --json
+  npx doculens report.pdf
+  npx doculens data.xlsx
+  npx doculens large.pdf --page-by-page --max-chars 50000
+  npx doculens archive.zip --list-only
+  npx doculens notes.docx --json
 `);
 }
 

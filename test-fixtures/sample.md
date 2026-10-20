@@ -1,4 +1,4 @@
-# Doc Reader SDK
+# doculens
 
 ## Features
 - PDF extraction
@@ -10,7 +10,7 @@
 
 ## Usage
 ```typescript
-import { readDoc } from 'doc-reader-sdk';
+import { readDoc } from 'doculens';
 const result = await readDoc('file.pdf');
 console.log(result.content);
 ```

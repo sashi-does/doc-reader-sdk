@@ -5,6 +5,11 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+- Renamed the package from `doc-reader-sdk` to `doculens` (npm name, CLI binary, and all import examples). No API changes.
+
 ## [1.0.0] - 2026-10-20
 
 ### Added
@@ -13,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Type detection via file extension and magic-byte sniffing, with ZIP-container refinement for Office/EPUB formats.
 - Streaming mode for text files over 10 MB.
 - `maxChars` truncation, per-page/per-sheet/per-slide chunking, and structured warnings on partial extraction.
-- CLI (`doc-reader`) with human-readable and `--json` output modes.
+- CLI (`doculens`) with human-readable and `--json` output modes.
 - Vitest test suite covering every supported format against the fixtures in `test-fixtures/`.
 
 ### Fixed
