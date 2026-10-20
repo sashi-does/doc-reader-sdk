@@ -31,9 +31,7 @@
     "test:watch": "vitest",
     "test:smoke": "tsx src/test.ts",
     "typecheck": "tsc --noEmit",
-    "predocs": "rm -rf docs-dist",
-    "docs": "typedoc",
-    "postdocs": "cp -r site/. docs-dist/ && touch docs-dist/.nojekyll",
+    "docs:preview": "npx --yes serve site",
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
   "keywords": [
@@ -65,7 +63,6 @@
     "@types/node": "^22.15.3",
     "@types/pdf-parse": "^1.1.5",
     "tsx": "^4.23.15",
-    "typedoc": "^0.28.20",
     "typescript": "^5.8.3",
     "vitest": "^5.0.5"
   },

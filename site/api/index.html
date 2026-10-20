@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API reference — doculens</title>
+<meta name="description" content="Full API reference for doculens: readDoc(), DocReader, ExtractionOptions, ExtractionResult, DocChunk, and DocType.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔎</text></svg>">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <a class="brand" href="../">
+      <span class="brand-mark">🔎</span>
+      doculens
+    </a>
+    <nav class="nav-links">
+      <a href="../#formats">Formats</a>
+      <a href="./" class="active">Docs</a>
+      <a href="https://github.com/sashi-does/doculens">GitHub</a>
+      <a class="cta" href="https://www.npmjs.com/package/doculens">npm ↗</a>
+    </nav>
+  </div>
+</header>
+
+<section class="api-hero">
+  <span class="eyebrow"><span class="dot"></span> v1.0.0</span>
+  <h1>API reference</h1>
+  <p class="sub">Everything exported from <code>doculens</code> — one function, one class, four types.</p>
+</section>
+
+<nav class="api-toc">
+  <div class="wrap">
+    <a href="#readDoc">readDoc()</a>
+    <a href="#DocReader">DocReader</a>
+    <a href="#ExtractionOptions">ExtractionOptions</a>
+    <a href="#ExtractionResult">ExtractionResult</a>
+    <a href="#DocChunk">DocChunk</a>
+    <a href="#DocType">DocType</a>
+  </div>
+</nav>
+
+<main class="api-body">
+
+  <article class="member" id="readDoc">
+    <span class="member-kind">Function</span>
+    <h2><code>readDoc(filePath, options?): Promise&lt;ExtractionResult&gt;</code></h2>
+    <p class="desc">One-shot convenience wrapper around <code>new DocReader().read(filePath, options)</code>. Use this for a single extraction; use <a href="#DocReader"><code>DocReader</code></a> directly when you want to reuse options across many files.</p>
+    <pre class="codeblock inline"><span class="tok-kw">import</span> { readDoc } <span class="tok-kw">from</span> <span class="tok-str">'doculens'</span>;
+
+<span class="tok-kw">const</span> result = <span class="tok-kw">await</span> <span class="tok-fn">readDoc</span>(<span class="tok-str">'report.pdf'</span>);
+console.<span class="tok-fn">log</span>(result.content);</pre>
+  </article>
+
+  <article class="member" id="DocReader">
+    <span class="member-kind">Class</span>
+    <h2><code>DocReader</code></h2>
+    <p class="desc">Holds a set of default <a href="#ExtractionOptions"><code>ExtractionOptions</code></a> that apply to every <code>read()</code> call, unless overridden per call.</p>
+    <pre class="codeblock inline"><span class="tok-kw">new</span> <span class="tok-fn">DocReader</span>(defaultOptions?: ExtractionOptions)
+
+reader.<span class="tok-fn">read</span>(filePath: <span class="tok-type">string</span>, options?: ExtractionOptions): Promise&lt;ExtractionResult&gt;</pre>
+    <pre class="codeblock inline" style="margin-top:14px"><span class="tok-kw">import</span> { DocReader } <span class="tok-kw">from</span> <span class="tok-str">'doculens'</span>;
+
+<span class="tok-kw">const</span> reader = <span class="tok-kw">new</span> <span class="tok-fn">DocReader</span>({ allSheets: <span class="tok-kw">false</span> });
+
+<span class="tok-kw">await</span> reader.<span class="tok-fn">read</span>(<span class="tok-str">'a.xlsx'</span>);                       <span class="tok-com">// first sheet only</span>
+<span class="tok-kw">await</span> reader.<span class="tok-fn">read</span>(<span class="tok-str">'b.xlsx'</span>, { allSheets: <span class="tok-kw">true</span> }); <span class="tok-com">// overridden for this call</span></pre>
+  </article>
+
+  <article class="member" id="ExtractionOptions">
+    <span class="member-kind">Interface</span>
+    <h2><code>ExtractionOptions</code></h2>
+    <p class="desc">Passed to the <code>DocReader</code> constructor as defaults, and/or to <code>.read()</code> / <code>readDoc()</code> per call.</p>
+    <table class="fields">
+      <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+      <tr><td>maxChars</td><td class="type">number</td><td class="desc-cell">Truncate output across chunks. <span class="default">Default: unlimited</span></td></tr>
+      <tr><td>pageByPage</td><td class="type">boolean</td><td class="desc-cell">PDF: extract one chunk per page. <span class="default">Default: false</span></td></tr>
+      <tr><td>allSheets</td><td class="type">boolean</td><td class="desc-cell">XLSX: include every sheet, not just the first. <span class="default">Default: true</span></td></tr>
+      <tr><td>listOnly</td><td class="type">boolean</td><td class="desc-cell">ZIP: list entries only, don't extract contents. <span class="default">Default: true</span></td></tr>
+      <tr><td>encoding</td><td class="type">BufferEncoding</td><td class="desc-cell">Force a text encoding instead of auto-detecting. <span class="default">Default: auto-detect</span></td></tr>
+      <tr><td>streaming</td><td class="type">boolean</td><td class="desc-cell">Force streaming mode for text files. <span class="default">Default: true for files &gt; 10&nbsp;MB</span></td></tr>
+      <tr><td>chunkSize</td><td class="type">number</td><td class="desc-cell">Stream chunk size, in bytes. <span class="default">Default: 1&nbsp;MB</span></td></tr>
+    </table>
+  </article>
+
+  <article class="member" id="ExtractionResult">
+    <span class="member-kind">Interface</span>
+    <h2><code>ExtractionResult</code></h2>
+    <p class="desc">Returned by every <code>read()</code> / <code>readDoc()</code> call — always, even when the underlying parser hit a problem.</p>
+    <table class="fields">
+      <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+      <tr><td>type</td><td class="type">DocType</td><td class="desc-cell">Detected format — see <a href="#DocType">DocType</a>.</td></tr>
+      <tr><td>content</td><td class="type">string</td><td class="desc-cell">Full text, all chunks joined with <code>"\n\n"</code>.</td></tr>
+      <tr><td>chunks</td><td class="type">DocChunk[]</td><td class="desc-cell">Per-page / per-sheet / per-slide / per-record pieces — see <a href="#DocChunk">DocChunk</a>.</td></tr>
+      <tr><td>charCount</td><td class="type">number</td><td class="desc-cell"><code>content.length</code>.</td></tr>
+      <tr><td>truncated</td><td class="type">boolean</td><td class="desc-cell"><code>true</code> if <code>maxChars</code> cut the output short.</td></tr>
+      <tr><td>warnings</td><td class="type">string[]</td><td class="desc-cell">Non-fatal issues — encoding fallback, a scanned/image-only PDF, a parser that choked on the file structure. Extraction never throws for these; it reports them here instead.</td></tr>
+    </table>
+  </article>
+
+  <article class="member" id="DocChunk">
+    <span class="member-kind">Interface</span>
+    <h2><code>DocChunk</code></h2>
+    <p class="desc">One piece of a document's content — a page, a sheet, a slide, a record.</p>
+    <table class="fields">
+      <tr><th>Field</th><th>Type</th><th>Description</th></tr>
+      <tr><td>index</td><td class="type">number</td><td class="desc-cell">Zero-based position within <code>chunks</code>.</td></tr>
+      <tr><td>content</td><td class="type">string</td><td class="desc-cell">This chunk's text.</td></tr>
+      <tr><td>source</td><td class="type">string?</td><td class="desc-cell">Human-readable label, e.g. <code>"Page 3"</code>, <code>"Sheet: Finance"</code>, <code>"Slide 2"</code>, <code>"Record 14"</code>.</td></tr>
+    </table>
+  </article>
+
+  <article class="member" id="DocType">
+    <span class="member-kind">Type</span>
+    <h2><code>DocType</code></h2>
+    <p class="desc">The set of formats <code>detectDocType()</code> can resolve to.</p>
+    <div class="type-union">
+      <code>"pdf"</code><code>"docx"</code><code>"doc"</code><code>"xlsx"</code><code>"xls"</code>
+      <code>"pptx"</code><code>"ppt"</code><code>"csv"</code><code>"tsv"</code><code>"json"</code>
+      <code>"jsonl"</code><code>"txt"</code><code>"md"</code><code>"html"</code><code>"xml"</code>
+      <code>"rtf"</code><code>"epub"</code><code>"zip"</code><code>"log"</code><code>"unknown"</code>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span class="left">MIT © doculens — built for Node.js 18+</span>
+    <nav class="footer-links">
+      <a href="../">Home</a>
+      <a href="https://github.com/sashi-does/doculens">GitHub</a>
+      <a href="https://www.npmjs.com/package/doculens">npm</a>
+      <a href="https://github.com/sashi-does/doculens/blob/main/CONTRIBUTING.md">Contributing</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
