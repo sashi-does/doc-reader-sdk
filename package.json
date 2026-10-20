@@ -31,6 +31,7 @@
     "test:watch": "vitest",
     "test:smoke": "tsx src/test.ts",
     "typecheck": "tsc --noEmit",
+    "docs": "typedoc",
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
   "keywords": [
@@ -49,11 +50,11 @@
   "author": "sashi-does (https://github.com/sashi-does)",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sashi-does/doc-reader-sdk.git"
+    "url": "git+https://github.com/sashi-does/doculens.git"
   },
-  "homepage": "https://github.com/sashi-does/doc-reader-sdk#readme",
+  "homepage": "https://sashi-does.github.io/doculens/",
   "bugs": {
-    "url": "https://github.com/sashi-does/doc-reader-sdk/issues"
+    "url": "https://github.com/sashi-does/doculens/issues"
   },
   "engines": {
     "node": ">=18"
@@ -62,6 +63,7 @@
     "@types/node": "^22.15.3",
     "@types/pdf-parse": "^1.1.5",
     "tsx": "^4.23.15",
+    "typedoc": "^0.28.20",
     "typescript": "^5.8.3",
     "vitest": "^5.0.5"
   },

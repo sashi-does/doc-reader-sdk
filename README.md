@@ -1,9 +1,10 @@
 # doculens
 
-[![CI](https://github.com/sashi-does/doc-reader-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/sashi-does/doc-reader-sdk/actions/workflows/ci.yml)
+[![CI](https://github.com/sashi-does/doculens/actions/workflows/ci.yml/badge.svg)](https://github.com/sashi-does/doculens/actions/workflows/ci.yml)
 [![npm version](https://img.shields.io/npm/v/doculens.svg)](https://www.npmjs.com/package/doculens)
 [![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![node](https://img.shields.io/node/v/doculens.svg)](package.json)
+[![docs](https://img.shields.io/badge/docs-typedoc-blue.svg)](https://sashi-does.github.io/doculens/)
 
 A universal TypeScript/Node.js SDK for extracting plain text from documents — one API for PDF, Word, Excel, PowerPoint, CSV, JSON and more, with automatic type detection, streaming for large files, and graceful fallback instead of thrown exceptions.
 
@@ -98,6 +99,8 @@ await reader.read('other.xlsx', { allSheets: false }); // just this call, first 
 ```
 
 ## API reference
+
+Full generated reference (with every type and member): **[sashi-does.github.io/doculens](https://sashi-does.github.io/doculens/)**
 
 ### `readDoc(filePath, options?): Promise<ExtractionResult>`
 

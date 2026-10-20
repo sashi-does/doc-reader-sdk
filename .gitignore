@@ -5,6 +5,7 @@ qodo/
 
 # Build output
 dist/
+docs-dist/
 
 # Logs
 *.log

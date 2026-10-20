@@ -19,6 +19,7 @@ npm run typecheck   # tsc --noEmit
 npm test            # vitest, assertion-based suite in test/
 npm run test:smoke  # runs every fixture in test-fixtures/ through the CLI formatter
 npm run build       # compiles src/ -> dist/
+npm run docs        # builds the TypeDoc API reference into docs-dist/ (deployed to GitHub Pages on push to main)
 ```
 
 Run `npm test` and `npm run typecheck` before opening a PR — CI runs both on every push and PR.
