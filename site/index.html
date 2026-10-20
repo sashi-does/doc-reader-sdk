@@ -38,21 +38,41 @@
 
 <main id="top">
   <section class="hero wrap">
-    <span class="eyebrow">TypeScript · Node.js SDK · MIT</span>
-    <div class="crop"><i></i><i></i><i></i><i></i>
-      <h1>Stop writing a new parser for every <span class="hl">file type</span></h1>
-    </div>
-    <p class="sub">doculens gives you one <b>read()</b> call for PDF, Word, Excel, PowerPoint, CSV, JSON and more — automatic format detection, streaming for large files, and graceful fallback instead of thrown exceptions.</p>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">TypeScript · Node.js SDK · MIT</span>
+        <h1>Stop writing a new parser for every <span class="hl">file type</span></h1>
+        <p class="sub">doculens gives you a single <b>read()</b> call for PDF, Word, Excel, PowerPoint, CSV, JSON and more — automatic format detection, streaming for large files, and graceful fallback instead of thrown exceptions.</p>
 
-    <div class="cta-row">
-      <a class="btn btn-primary" href="api/">Read the docs →</a>
-      <a class="btn btn-secondary" href="https://github.com/sashi-does/doculens">View on GitHub</a>
-    </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="api/">Read the docs →</a>
+          <a class="btn btn-secondary" href="https://github.com/sashi-does/doculens">View on GitHub</a>
+        </div>
 
-    <div class="install">
-      <span class="dollar">$</span>
-      <code>npm install doculens</code>
-      <button class="copy-btn" data-copy="npm install doculens" aria-label="Copy install command"><svg><use href="#i-copy"/></svg></button>
+        <div class="install">
+          <span class="dollar">$</span>
+          <code>npm install doculens</code>
+          <button class="copy-btn" data-copy="npm install doculens" aria-label="Copy install command"><svg><use href="#i-copy"/></svg></button>
+        </div>
+      </div>
+
+      <div class="term hero-demo">
+        <div class="term-head">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <span class="title">terminal</span>
+        </div>
+        <div class="term-body"><pre><span class="tok-com">$ npx doculens quarterly-report.pdf</span>
+
+══════════════════════════════
+  quarterly-report.pdf
+  Type: PDF  Size: 412.3 KB  Chars: 18,204  Chunks: 1
+══════════════════════════════
+
+<span class="tok-dim">"Q3 revenue grew 12% quarter-over-quarter,
+driven primarily by..."</span>
+
+<span class="tok-ok">Done.</span> 18,204 characters extracted from 1 chunk(s).</pre></div>
+      </div>
     </div>
   </section>
 
