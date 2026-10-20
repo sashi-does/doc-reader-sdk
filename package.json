@@ -1,0 +1,76 @@
+{
+  "name": "doc-reader-sdk",
+  "version": "1.0.0",
+  "description": "Universal document text extractor SDK for Node.js — PDF, DOCX, XLSX, PPTX, CSV, JSON, and more",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "doc-reader": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "dev": "tsx src/cli.ts",
+    "read": "tsx src/cli.ts",
+    "start": "node dist/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:smoke": "tsx src/test.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "keywords": [
+    "pdf",
+    "docx",
+    "xlsx",
+    "pptx",
+    "csv",
+    "document",
+    "extractor",
+    "parser",
+    "text-extraction",
+    "sdk"
+  ],
+  "license": "MIT",
+  "author": "sashi-does (https://github.com/sashi-does)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sashi-does/doc-reader-sdk.git"
+  },
+  "homepage": "https://github.com/sashi-does/doc-reader-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/sashi-does/doc-reader-sdk/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/pdf-parse": "^1.1.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.8.3",
+    "vitest": "^5.0.5"
+  },
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "chardet": "^2.0.0",
+    "iconv-lite": "^0.6.3",
+    "mammoth": "^1.13.0",
+    "pdf-parse": "^1.1.1",
+    "xlsx": "^0.18.5"
+  }
+}
