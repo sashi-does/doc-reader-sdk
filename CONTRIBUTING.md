@@ -4,6 +4,8 @@ Thanks for considering a contribution to doculens.
 
 ## Setup
 
+Requires **Node 22+** to run the dev toolchain (vitest 5.x doesn't support older Node). The published library itself only requires Node 18+ — this floor is for contributors only.
+
 ```bash
 git clone https://github.com/sashi-does/doc-reader-sdk.git
 cd doc-reader-sdk

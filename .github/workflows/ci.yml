@@ -11,7 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x]
+        # vitest 5.x (the dev-only test runner) requires Node >=22.12; the
+        # compiled library itself (see "engines" in package.json) only needs
+        # Node >=18. Node 18/20 are also past their own upstream EOL.
+        node-version: [22.x, 24.x]
     steps:
       - uses: actions/checkout@v4
 
