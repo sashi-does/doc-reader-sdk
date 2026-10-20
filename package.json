@@ -31,7 +31,9 @@
     "test:watch": "vitest",
     "test:smoke": "tsx src/test.ts",
     "typecheck": "tsc --noEmit",
+    "predocs": "rm -rf docs-dist",
     "docs": "typedoc",
+    "postdocs": "cp -r site/. docs-dist/ && touch docs-dist/.nojekyll",
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
   "keywords": [

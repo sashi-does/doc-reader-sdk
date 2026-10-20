@@ -1,7 +1,7 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "entryPoints": ["src/index.ts"],
-  "out": "docs-dist",
+  "out": "docs-dist/api",
   "name": "doculens",
   "readme": "README.md",
   "includeVersion": true,
@@ -9,6 +9,7 @@
   "excludeInternal": true,
   "excludeExternals": true,
   "navigationLinks": {
+    "Home": "/doculens/",
     "GitHub": "https://github.com/sashi-does/doculens",
     "npm": "https://www.npmjs.com/package/doculens"
   },
