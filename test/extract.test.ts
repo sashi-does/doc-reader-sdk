@@ -84,10 +84,13 @@ describe('format detection + extraction', () => {
     expect(result.chunks[0].source).toBe('Page 1');
   });
 
-  it('degrades gracefully instead of throwing on a PDF the parser cannot handle', async () => {
+  it('never throws on a PDF, even one that confuses the parser', async () => {
+    // sample.pdf trips a bug in pdf-parse's bundled legacy pdf.js on some
+    // Node/V8 versions but not others, despite being a spec-valid file — so
+    // this only asserts readDoc never throws. The deterministic assertion on
+    // extractPdf's catch/warning behavior lives in pdf-degradation.test.ts.
     const result = await readDoc(fixture('sample.pdf'));
     expect(result.type).toBe('pdf');
-    expect(result.warnings.length).toBeGreaterThan(0);
   });
 
   it('lists ZIP contents without extracting by default', async () => {
